@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class MessageHandler {
 
     @KafkaListener(topics = KafkaConsts.TOPIC_TEST, containerFactory = "ackContainerFactory")
-    public void handleMessage(ConsumerRecord record, Acknowledgment acknowledgment) {
+    public void handleMessage(ConsumerRecord<?, ?> record, Acknowledgment acknowledgment) {
         try {
             String message = (String) record.value();
             log.info("收到消息: {}", message);
